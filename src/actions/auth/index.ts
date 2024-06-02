@@ -2,6 +2,7 @@
 
 import { currentUser, redirectToSignIn } from "@clerk/nextjs";
 import { db } from "@/lib/db";
+import { onGetAllAccountDomains } from "../settings";
 
 export const onCompleteUserRegistration = async (
   fullname: string,
@@ -32,3 +33,26 @@ export const onCompleteUserRegistration = async (
     return { status: 400 };
   }
 };
+
+export async function onLoginUser() {
+  try {
+    const user = await currentUser();
+    if (!user) return redirectToSignIn();
+    const authenticated = await db.user.findUnique({
+      where: {
+        clerkId: user.id,
+      },
+      select: {
+        fullname: true,
+        id: true,
+        type: true,
+      },
+    });
+    if (authenticated) {
+      const domains = await onGetAllAccountDomains();
+      return { status: 200, user: authenticated, domain: domains?.domains };
+    }
+  } catch (error) {
+    return { status: 400 };
+  }
+}

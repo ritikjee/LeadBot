@@ -34,5 +34,5 @@ export const useAuth = () => {
     throw new Error("useAuth must be used within AuthProvider");
   }
 
-  return React.useContext(AuthContext);
+  return useContext(AuthContext);
 };

@@ -15,22 +15,18 @@ const Layout = async ({ children }: Props) => {
   return (
     <div className="h-screen flex w-full justify-center">
       <div className="w-[600px] ld:w-full flex flex-col items-start p-6 !pb-0">
-        <Image
-          src="/images/logo.png"
-          alt="LOGO"
-          sizes="100vw"
-          style={{
-            width: "20%",
-            height: "auto",
-          }}
-          width={0}
-          height={0}
-        />
+        <p className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent font-bold text-3xl">
+          Leadbot AI
+        </p>
         <div className="h-full w-full overflow-hidden">{children}</div>
       </div>
       <div className="hidden lg:flex flex-1 w-full max-h-screen max-w-4000px overflow-hidden relative bg-cream dark:bg-transparent flex-col pt-10 pl-24 gap-3 ">
         <h2 className="text-gravel dark:text-white md:text-4xl font-bold">
-          Hi, I’m your AI powered sales assistant, LeadBot!
+          Hi, I’m your AI powered sales assistant,{" "}
+          <span className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">
+            Leadbot AI
+          </span>
+          !
         </h2>
         <p className="text-iridium dark:text-white md:text-sm mb-10">
           LeadBot is capable of capturing lead information without a form...{" "}
