@@ -1,11 +1,9 @@
 "use client";
-
 import useSideBar from "@/context/use-sidebar";
 import { cn } from "@/lib/utils";
 import React from "react";
-
-import MinMenu from "./minimized-menu";
 import MaxMenu from "./maximized-menu";
+import { MinMenu } from "./minimized-menu";
 
 type Props = {
   domains:
@@ -17,8 +15,10 @@ type Props = {
     | null
     | undefined;
 };
-function Sidebar({ domains }: Props) {
+
+const SideBar = ({ domains }: Props) => {
   const { expand, onExpand, page, onSignOut } = useSideBar();
+
   return (
     <div
       className={cn(
@@ -46,6 +46,6 @@ function Sidebar({ domains }: Props) {
       )}
     </div>
   );
-}
+};
 
-export default Sidebar;
+export default SideBar;
